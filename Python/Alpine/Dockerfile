@@ -2,7 +2,7 @@ FROM python:3-alpine
 
 LABEL mantainer CRISTIAN ESTEBAN CONTRERA <cristiancontrera95@gmail.com>
 
-ENV APPLICATION_NAME COREBI_IPYTHON
+ENV APPLICATION_NAME ALPINE_IPYTHON
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 
@@ -25,17 +25,16 @@ RUN pip3 install --upgrade pip
 RUN pip install azure \
                 bokeh \
                 boto3 \
-                catboost \
+                # catboost \
                 ConfigObject \
                 cython \
                 dask \
                 gcsfs \
                 google-cloud \
                 imbalanced-learn \
-                joblib \
                 jupyter \
                 jupyterlab \
-                keras \
+                # keras \
                 lightgbm \
                 matplotlib \
                 nltk \
@@ -46,10 +45,9 @@ RUN pip install azure \
                 pandas \
                 pillow \
                 plotly \
-                py4j \
+                # py4j \
                 pyarrow \
-                pyspark \
-                pytorch \
+                # pyspark \
                 requests \
                 scikit-image \
                 scikit-learn \
@@ -60,8 +58,8 @@ RUN pip install azure \
                 statsmodels \
                 SQLAlchemy \
                 Theano \
-                tensorflow \
-                torch \
+                # tensorflow \
+                # torch \
                 xgboost \
                 XlsxWriter
 

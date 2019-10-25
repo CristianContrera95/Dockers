@@ -34,6 +34,7 @@ RUN pip install azure \
                 jupyter \
                 jupyterlab \
                 keras \
+                kmod \
                 lightgbm \
                 matplotlib \
                 nltk \
@@ -80,7 +81,7 @@ WORKDIR /home/work
 #=====================#
 
 EXPOSE 8899
-COPY files_to_docker/spark_notebook.ipynb.template /home/corebi/spark_notebook.ipynb
+COPY files_to_docker/spark_notebook.ipynb.template /home/work/spark_notebook.ipynb
 
 #ENTRYPOINT ["cd /home/anybody && ipython3"]
 #CMD ["/home/LaVoz_Propensity/run.sh"]
