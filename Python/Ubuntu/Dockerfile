@@ -11,7 +11,7 @@ ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 #=====================================#
 
 RUN apt-get update --fix-missing && \
-	apt-get install -y wget tar nano htop curl ssh gcc g++ libsm6 libxext6 libxrender-dev make apt-utils
+	apt-get install -y wget tar nano htop curl ssh gcc g++ libsm6 libxext6 libxrender-dev make apt-utils openjdk-8-jre ca-certificates
 
 
 #=====================================#
@@ -34,7 +34,7 @@ RUN pip install azure \
                 jupyter \
                 jupyterlab \
                 keras \
-                kmod \
+                kmodes \
                 lightgbm \
                 matplotlib \
                 nltk \
@@ -68,6 +68,26 @@ RUN echo 'alias pip="pip3"' >> /etc/bash.bashrc
 
 
 #=====================#
+#    Install Spark    #
+#=====================#
+
+ARG SPARK_URL=http://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz
+RUN curl -s $SPARK_URL | tar xvz -C /opt/
+RUN ln -s /opt/spark-2.4.3-bin-hadoop2.7 /opt/spark
+
+
+#=====================#
+#  Final Env config   #
+#=====================#
+
+ENV SPARK_HOME /opt/spark 
+ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
+ENV PATH $PATH:$SPARK_HOME/bin:$JAVA_HOME/bin
+ENV PYTHON_PATH $SPARKHOME/python:PYTHON_PATH
+ENV PYSPARK_PYTHON python3
+
+
+#=====================#
 #      Add users      #
 #=====================#
 
@@ -82,6 +102,11 @@ WORKDIR /home/work
 
 EXPOSE 8899
 COPY files_to_docker/spark_notebook.ipynb.template /home/work/spark_notebook.ipynb
+
+
+#=====================#
+#   Command to run    #
+#=====================#
 
 #ENTRYPOINT ["cd /home/anybody && ipython3"]
 #CMD ["/home/LaVoz_Propensity/run.sh"]
