@@ -25,10 +25,13 @@ RUN pip install azure \
                 boto3 \
                 catboost \
                 ConfigObject \
+                cryptography==2.3 \
                 cython \
                 dask \
+                decorator==4.3.0 \
                 gcsfs \
                 google-cloud \
+                graphviz==0.8.1 \
                 imbalanced-learn \
                 joblib \
                 jupyter \
@@ -45,10 +48,10 @@ RUN pip install azure \
                 pandas \
                 pillow \
                 plotly \
-                py4j \
+                py4j==0.10.7 \
                 pyarrow \
                 pyspark \
-                requests \
+                requests==2.20.0 \
                 scikit-image \
                 scikit-learn \
                 scikit-plot \
