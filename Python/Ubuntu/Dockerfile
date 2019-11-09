@@ -104,7 +104,7 @@ WORKDIR /home/work
 #=====================#
 
 EXPOSE 8899
-COPY files_to_docker/spark_notebook.ipynb.template /home/work/spark_notebook.ipynb
+COPY files_to_docker/ /home/work/
 
 
 #=====================#
