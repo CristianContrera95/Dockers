@@ -20,53 +20,12 @@ RUN apt-get update --fix-missing && \
 
 RUN apt-get install -y python3 python3-pip ipython3
 RUN pip3 install --upgrade pip
-RUN pip install azure \
-                bokeh \
-                boto3 \
-                catboost \
-                ConfigObject \
-                cryptography==2.3 \
-                cython \
-                dask \
-                decorator==4.3.0 \
-                gcsfs \
-                google-cloud \
-                graphviz==0.8.1 \
-                imbalanced-learn \
-                joblib \
-                jupyter \
-                jupyterlab \
-                keras \
-                kmodes \
-                lightgbm \
-                matplotlib \
-                nltk \
-                mxnet \
-                numpy \
-                numba \
-                opencv-python \
-                pandas \
-                pillow \
-                plotly \
-                py4j==0.10.7 \
-                pyarrow \
-                pyspark \
-                requests==2.20.0 \
-                scikit-image \
-                scikit-learn \
-                scikit-plot \
-                scipy \
-                scrapy \
-                seaborn \
-                statsmodels \
-                SQLAlchemy \
-                Theano \
-                tensorflow \
-                torch \
-                xgboost \
-                XlsxWriter
+COPY requeriments.txt requeriments.txt
+RUN pip install -r requirements.txt
 
+# Jupyter compatibility
 RUN pip3 install 'prompt-toolkit<2.0.0,>=1.0.15' --force-reinstall
+# Alias for comfort
 RUN echo 'alias pip="pip3"' >> /etc/bash.bashrc
 
 
