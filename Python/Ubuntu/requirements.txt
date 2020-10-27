@@ -3,7 +3,7 @@ bokeh
 boto3
 catboost
 ConfigObject
-cryptography==2.3
+cryptography==3.2
 cython
 dask
 decorator==4.3.0
